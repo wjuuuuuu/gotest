@@ -1,0 +1,11 @@
+go 1.21.3
+
+use (
+	practice/benchmarking
+	hello
+	practice/handler
+	hw
+	myapp
+	practice/test
+	uploadFile
+)

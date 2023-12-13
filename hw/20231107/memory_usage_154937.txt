@@ -1,0 +1,6 @@
+SwapMemory Usage
+Time: 2023-11-07 15:49:32, Used: 16062459904, Free: 4670402560, Used Percent: 77.473431%
+Time: 2023-11-07 15:49:37, Used: 16060747776, Free: 4672114688, Used Percent: 77.465173%
+VirtualMemory Usage
+Time: 2023-11-07 15:49:32, Used: 11864268800, Free: 4842061824, Used Percent: 71.000000%
+Time: 2023-11-07 15:49:37, Used: 11866710016, Free: 4839620608, Used Percent: 71.000000%
