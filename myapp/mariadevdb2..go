@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type BizCustomer struct {
+type BizCustomer1 struct {
 	gorm.Model
 	UserInfo        string
 	UserName        string
@@ -27,7 +27,7 @@ func main() {
 		panic("db connection fail")
 	}
 
-	var bizcustom []BizCustomer
+	var bizcustom []BizCustomer1
 
 	db.Table("biz_customer").Where("user_name Like ?", "%kt%").Find(&bizcustom)
 

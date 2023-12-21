@@ -35,6 +35,7 @@ type Xenia struct {
 	Timeout time.Duration
 }
 
+// Xenia는 PUll 메서드를구현했으므로 Puller 인터페이스로 대체될 수 있다.
 func (*Xenia) Pull(d *Data) error {
 	switch rand.Intn(10) {
 	case 1, 9:
@@ -48,6 +49,7 @@ func (*Xenia) Pull(d *Data) error {
 	}
 }
 
+// Pillar는  Stor 메서드는 구현했으므로 Storer 인터페이스로 대체될 수 있다.
 type Pillar struct {
 	Host    string
 	Timeout time.Duration
@@ -58,13 +60,14 @@ func (*Pillar) Store(d *Data) error {
 	return nil
 }
 
+// System타입은 Xenia와 Pillar를 갖고 있으므로 PullStorer 인터페이스로 대체될 수 있다.
 type System struct {
 	Xenia
 	Pillar
 }
 
 func pull(p Puller, data []Data) (int, error) {
-	for i := range data {
+	for i := range data { // 0부터 2까지
 		if err := p.Pull(&data[i]); err != nil {
 			return i, err
 		}
@@ -81,10 +84,11 @@ func store(s Storer, data []Data) (int, error) {
 	return len(data), nil
 }
 
-func Copy(ps PullStorer, batch int) error {
-	data := make([]Data, batch)
+func Copy(ps PullStorer, batch int) error { // sys , 3
+	data := make([]Data, batch) // 크기가 3인 슬라이스 data
+
 	for {
-		i, err := pull(ps, data)
+		i, err := pull(ps, data) // sys(PullStorer)은 Puller. 인터페이스로 대체될수 있는가? sys의 Xenai가 pull 메서드를 가지고 있다.
 		if i > 0 {
 			if _, err := store(ps, data[:i]); err != nil {
 				return err

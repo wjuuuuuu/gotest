@@ -8,4 +8,7 @@ use (
 	myapp
 	practice/test
 	uploadFile
+	login
+	nats
+	practice
 )
